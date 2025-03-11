@@ -10,7 +10,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const { user, authenticated } = useUser();
   if (user || authenticated) {
-    navigate(APP_ROUTES.DASHBOARD)
+    navigate(APP_ROUTES.LANDINGPAGE)
   }
 
   const [email, setEmail] = useState('');
@@ -33,7 +33,7 @@ const SignIn = () => {
         return;
       }
       storeTokenInLocalStorage(response.data.token);
-      navigate(APP_ROUTES.DASHBOARD)
+      navigate(APP_ROUTES.LANDINGPAGE)
     }
     catch (err) {
       console.log('Some error occured during signing in: ', err);

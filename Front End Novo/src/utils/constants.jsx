@@ -8,5 +8,15 @@ export const API_ROUTES = {
 export const APP_ROUTES = {
   SIGN_UP: '/signup',
   SIGN_IN: '/signin',
-  DASHBOARD: '/dashboard',
+  LANDINGPAGE: '/landingPage',
+  VIDEOS: '/videos',
+  PROFILE: '/profile',
+  ABOUT: '/about',
+  TRAINMENTS: '/trainments',
+  CDSWEB: '/cdsweb',
+  CDSDESKTOP: '/cdsdesktop',
+  RETAGUARDAWEB: '/retaguardaweb',
+  RETAGUARDADESKTOP: '/retaguardadesktop',
+  FRENTEDELOJAWEB: '/frentedelojaweb',
+  FRENTEDELOJADESKTOP: '/frentedelojadesktop',
 }
