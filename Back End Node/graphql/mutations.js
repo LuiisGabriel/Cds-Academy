@@ -17,6 +17,9 @@ export const GetUserByEmailQuery = gql`
       firstname
       lastname
       password
+      photo {
+      url
+    }
     }
   }
 `;

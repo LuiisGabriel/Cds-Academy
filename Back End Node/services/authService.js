@@ -64,6 +64,7 @@ async getCurrentUser(token) {
   delete nextUser.password;
   return nextUser;  
 }
+
 }
 
 export default AuthService;
