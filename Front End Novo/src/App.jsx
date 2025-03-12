@@ -12,6 +12,7 @@ import RetaguardaWeb from './components/RetaguardaWeb';
 import FrenteDeLojaWeb from './components/FrenteDeLojaWeb';
 import FrenteDeLojaDesktop from './components/FrenteDeLojaDesktop';
 import RetaguardaDesktop from './components/RetaguardaDesktop';
+import Valuations from './components/Valuations';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path={APP_ROUTES.FRENTEDELOJAWEB} element={<FrenteDeLojaWeb />} />
         <Route path={APP_ROUTES.RETAGUARDADESKTOP} element={<RetaguardaDesktop />} />
         <Route path={APP_ROUTES.FRENTEDELOJADESKTOP} element={<FrenteDeLojaDesktop />} />
+        <Route path={APP_ROUTES.VALUATIONS} element={<Valuations />} />
       </Routes>
     </BrowserRouter>
   );

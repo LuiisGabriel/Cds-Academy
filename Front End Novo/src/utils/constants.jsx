@@ -19,4 +19,5 @@ export const APP_ROUTES = {
   RETAGUARDADESKTOP: '/retaguardadesktop',
   FRENTEDELOJAWEB: '/frentedelojaweb',
   FRENTEDELOJADESKTOP: '/frentedelojadesktop',
+  VALUATIONS: '/valuations',
 }

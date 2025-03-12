@@ -6,6 +6,7 @@ import { useUser } from '../lib/customHooks';
 const navigation = [
   { name: 'Página inicial', href: APP_ROUTES.LANDINGPAGE},
   { name: 'Treinamentos', href: APP_ROUTES.TRAINMENTS},
+  { name: 'Avaliações', href: APP_ROUTES.VALUATIONS},
   { name: 'Sobre', href: APP_ROUTES.ABOUT},
   
 ]
@@ -30,8 +31,8 @@ export default function Navbar() {
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
-      <div className=" max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between">
+      <div className=" px-2 sm:px-6 lg:px-8">
+        <div className="relative flex h-16  items-center justify-between ">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
           </div>
           <div className="flex flex-1 items-center justify-start  sm:justify-start">
@@ -62,15 +63,16 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 ">
 
             <Menu as="div" className="relative ml-3">
               <div>
-                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
+                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:bg-grey-300 focus:ring-offset-gray-800 focus:outline-hidden">
                   <span className="absolute -inset-1.5" />
                   <img
                     alt="imagem de perfil"
-                    src=""
+                    src="#"
+                    
                     className="size-8 rounded-full"
                   />
                 </MenuButton>

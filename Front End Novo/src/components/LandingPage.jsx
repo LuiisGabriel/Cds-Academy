@@ -3,8 +3,15 @@ import { useUser } from '../lib/customHooks';
 import { LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid';
 import{APP_ROUTES} from '../utils/constants';
 import Navbar from './Navbar';
-import Imagem1 from '../assets/perfil.jpg';
-import conteudo from '../assets/LOGO.png';
+import FrenteDeLoja from '../assets/FrenteDeLoja.jpg';
+import Retaguarda from '../assets/Retaguarda.jpg';
+import Otica from '../assets/Ótica.jpg';
+import Fabrica from  '../assets/Fabrica.jpg';
+import PetShop from '../assets/PetShop.jpg';
+import Nfe from '../assets/MóduloNfe.jpg';
+import Light from '../assets/Light.jpg';
+import CdsDesktop from '../assets/CDSDESKTOP.png';
+import CdsSistemas from '../assets/CDSSistemas.jpg';
 
 const LandingPage = () => {
       const { user, authenticated } = useUser();
@@ -15,7 +22,6 @@ const LandingPage = () => {
       }
   return (
     <>
-    
       <nav className="sticky top-0 z-50"><Navbar /></nav>
       <div className="bg-gray-300">
         <div className="relative overflow-hidden ">
@@ -41,37 +47,14 @@ const LandingPage = () => {
                           <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                             <img
                               alt=""
-                              src={Imagem1}
+                              src={Retaguarda}
                               className="size-full object-cover"
                             />
                           </div>
                           <div className="h-64 w-44 overflow-hidden rounded-lg">
                             <img
                               alt=""
-                              src={Imagem1}
-                              className="size-full object-cover"
-                            />
-                          </div>
-                        </div>
-                        <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                          <div className="h-64 w-44 overflow-hidden rounded-lg">
-                            <img
-                              alt=""
-                              src={Imagem1}
-                              className="size-full object-cover"
-                            />
-                          </div>
-                          <div className="h-64 w-44 overflow-hidden rounded-lg">
-                            <img
-                              alt=""
-                              src={Imagem1}
-                              className="size-full object-cover"
-                            />
-                          </div>
-                          <div className="h-64 w-44 overflow-hidden rounded-lg">
-                            <img
-                              alt=""
-                              src={Imagem1}
+                              src={FrenteDeLoja}
                               className="size-full object-cover"
                             />
                           </div>
@@ -80,14 +63,37 @@ const LandingPage = () => {
                           <div className="h-64 w-44 overflow-hidden rounded-lg">
                             <img
                               alt=""
-                              src={Imagem1}
+                              src={Light}
                               className="size-full object-cover"
                             />
                           </div>
                           <div className="h-64 w-44 overflow-hidden rounded-lg">
                             <img
                               alt=""
-                              src={Imagem1}
+                              src={Otica}
+                              className="size-full object-cover"
+                            />
+                          </div>
+                          <div className="h-64 w-44 overflow-hidden rounded-lg">
+                            <img
+                              alt=""
+                              src={PetShop}
+                              className="size-full object-cover"
+                            />
+                          </div>
+                        </div>
+                        <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                          <div className="h-64 w-44 overflow-hidden rounded-lg">
+                            <img
+                              alt=""
+                              src={Fabrica}
+                              className="size-full object-cover"
+                            />
+                          </div>
+                          <div className="h-64 w-44 overflow-hidden rounded-lg">
+                            <img
+                              alt=""
+                              src={Nfe}
                               className="size-full object-cover"
                             />
                           </div>
@@ -151,7 +157,7 @@ const LandingPage = () => {
             <div className="-mt-12 -ml-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
               <img
                 alt=""
-                src={conteudo}
+                src={CdsDesktop}
                 className="w-[48rem] max-w-none rounded-xl bg-gray-900 ring-1 shadow-xl ring-gray-400/10 sm:w-[57rem]"
               />
             </div>

@@ -1,5 +1,6 @@
 import { API_ROUTES } from '../utils/constants';
 import axios from 'axios';
+
 export function storeTokenInLocalStorage(token) {
   localStorage.setItem('token', token);
 }

@@ -12,7 +12,7 @@ const LandingPage = () => {
     return (
         <>
             <nav className="sticky top-0 z-50"><Navbar /></nav>
-            <div className="p-16 bg-gray-800 h-screen">
+            <div className="p-16 bg-gray-300 h-screen">
                 <div className="text-2xl mb-4 font-bold text-white"> Perfil </div>
                 {
                     user &&

@@ -35,7 +35,7 @@ const RetaguardaWeb = () => {
         {location.pathname}
             <nav className="sticky top-0 z-50"><Navbar /></nav>
 
-            <div className="bg-white">
+            <div className="bg-gray-300">
                 <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                     <h2 className="sr-only">Videos</h2>
                     <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 xl:gap-x-1">
