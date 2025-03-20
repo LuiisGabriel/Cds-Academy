@@ -88,9 +88,10 @@ async adminSignup(adminSignupRequest) {
 }
 
 async createVideo(createVideoRequest) {
-  const { titulo, modulo, videoId, subModulo } = createVideoRequest;
+  const { titulo, ambiente, modulo, videoId, subModulo } = createVideoRequest;
   const videoData = {
     titulo,
+    ambiente,
     modulo,
     videoId,
     subModulo,

@@ -10,15 +10,18 @@ export const CreateNextUserMutation = gql`
 `;
 
 export const GetUserByEmailQuery = gql`
-    query getUserByEmailQuery($email: String!) {
-      nextUser(where: { email: $email }, stage: DRAFT) {
-      id
-      email
-      firstname
-      lastname
-      password
+query getUserByEmailQuery($email: String!) {
+  nextUser(where: {email: $email}, stage: DRAFT) {
+    id
+    email
+    firstname
+    lastname
+    password
+    photo{
+    url
     }
   }
+}
 `;
 
 export const CreateNextAdminUserMutation = gql`
@@ -47,6 +50,9 @@ export const GetAdminUserByEmailQuery = gql`
       firstname
       lastname
       password
+      photo{
+      url
+      }
     }
   }
 `;

@@ -75,13 +75,14 @@ class AuthController {
 
   async createVideo(req, res) {
     try {
-      const { titulo, modulo, videoId, subModulo } = req.body;
-      if (!titulo || !modulo || !videoId || !subModulo) {
+      const { titulo, ambiente, modulo, videoId, subModulo } = req.body;
+      if (!titulo || !ambiente || !modulo || !videoId || !subModulo) {
         res.status(400).end();
         return;
       }
       const { user, token } = await this.authService.createVideo({
         titulo,
+        ambiente,
         modulo,
         videoId,
         subModulo,
