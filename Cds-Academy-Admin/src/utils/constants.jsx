@@ -1,16 +1,19 @@
-const API_URL = 'http://localhost:3000'
+const API_URL = 'http://localhost:4000'
 export const API_ROUTES = {
-  SIGN_UP: `${API_URL}/auth/signup`,
-  SIGN_IN: `${API_URL}/auth/signin`,
+  ADMIN_SIGN_UP: `${API_URL}/auth/admin/signup`,
+  USER_SIGN_UP: `${API_URL}/auth/signup`,
+  ADMIN_SIGN_IN: `${API_URL}/auth/admin/signin`,
   CREATE_VIDEO: `${API_URL}/auth/createVideo`,
-  GET_USER: `${API_URL}/auth/me`,
+  GET_ADMIN: `${API_URL}/auth/admin/me`,
 }
 
 export const APP_ROUTES = {
   SIGN_UP: '/signup',
+  USER_SIGN_UP: '/usersignup',
   SIGN_IN: '/signin',
   LANDINGPAGE: '/landingPage',
   PROFILE: '/profile',
   CREATEVIDEO: '/createvideo',
   REGISTERS: '/registers',
 }
+

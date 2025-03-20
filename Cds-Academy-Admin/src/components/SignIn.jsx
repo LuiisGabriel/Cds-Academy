@@ -24,7 +24,7 @@ const SignIn = () => {
       setIsLoading(true);
       const response = await axios({
         method: 'post',
-        url: API_ROUTES.SIGN_IN,
+        url: API_ROUTES.ADMIN_SIGN_IN,
         data: {
           email,
           password
@@ -75,21 +75,21 @@ const SignIn = () => {
               />
             </div>
             <div className="flex flex-col items-center">
-            <button
-              className="
+              <button
+                className="
             flex justify-center
             p-2 rounded-md w-1/2 self-center
             bg-gray-800  text-white hover:bg-gray-700"
-              onClick={signIn}
-            >
-              {
-                isLoading ?
-                  <div className="mr-2 w-5 h-5 border-l-2 rounded-full animate-spin" /> : null
-              }
-              <span>
-                Entrar
-              </span>
-            </button>
+                onClick={signIn}
+              >
+                {
+                  isLoading ?
+                    <div className="mr-2 w-5 h-5 border-l-2 rounded-full animate-spin" /> : null
+                }
+                <span>
+                  Entrar
+                </span>
+              </button>
             </div>
           </form>
         </div>

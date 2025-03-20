@@ -16,6 +16,15 @@ const cadastros = [
     },
 
     {
+        id: 1,
+        name: 'Cadastrar usuário',
+        href: APP_ROUTES.USER_SIGN_UP,
+        imageSrc: CDSWEB,
+        imageAlt: 'Cadastrar usuário',
+
+    },
+
+    {
         id: 2,
         name: 'Cadastrar novo vídeo',
         href: APP_ROUTES.CREATEVIDEO,
@@ -26,12 +35,12 @@ const cadastros = [
 ]
 
 const Registers = () => {
-      const { user, authenticated } = useUser();
-      if (!user || !authenticated) {
-        return <div className="p-16 bg-gray-800 h-screen flex justify-center items-center">
-          <div className="ml-2 w-8 h-8 border-l-2 rounded-full animate-spin border-white" />
+    const { user, authenticated } = useUser();
+    if (!user || !authenticated) {
+        return <div className="p-16 bg-gray-300 h-screen flex justify-center items-center">
+            <div className="ml-2 w-8 h-8 border-l-2 rounded-full animate-spin border-white" />
         </div>;
-      }
+    }
     return (
         <>
             <nav className="sticky top-0 z-50"><Navbar /></nav>

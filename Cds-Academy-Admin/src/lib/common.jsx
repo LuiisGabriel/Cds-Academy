@@ -18,7 +18,7 @@ export async function getAuthenticatedUser() {
     }
     const response = await axios({
       method: 'GET',
-      url: API_ROUTES.GET_USER,
+      url: API_ROUTES.GET_ADMIN,
       headers: {
         Authorization: `Bearer ${token}`
       }

@@ -27,6 +27,14 @@ query getSubModulos {
 }
 `;
 
+export const getAmbientes = gql`
+query getAmbientes {
+  ambientes(first: 999999, stage: DRAFT) {
+    nome
+  }
+}
+`;
+
 
 
 
