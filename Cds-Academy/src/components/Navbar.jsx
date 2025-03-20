@@ -2,8 +2,6 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import Logo from '../assets/LOGO.png'
 import { APP_ROUTES } from '../utils/constants';
 import { useUser } from '../lib/customHooks';
-import foto from '../assets/FrenteDeLoja.jpg';
-import { useState } from 'react';
 const navigation = [
   { name: 'Página inicial', href: APP_ROUTES.LANDINGPAGE },
   { name: 'Treinamentos', href: APP_ROUTES.TRAINMENTS },
@@ -25,7 +23,7 @@ export default function Navbar() {
 
   const { user, authenticated } = useUser();
   if (!user || !authenticated) {
-    return <div className="p-16 bg-gray-800 h-screen flex justify-center items-center">
+    return <div className="p-16 bg-gray-300 h-screen flex justify-center items-center">
       <div className="ml-2 w-8 h-8 border-l-2 rounded-full animate-spin border-white" />
     </div>;
   }
@@ -65,19 +63,17 @@ export default function Navbar() {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 ">
-            {
-              user &&
               <div id="firstName" className='flex text-gray-300 mr-3 items-center'>
                 {user.firstName}
               </div>
-            }
+            
             <Menu as="div" className="relative ml-3">
               <div>
                 <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:bg-grey-300 focus:ring-offset-gray-800 focus:outline-hidden">
                   <span className="absolute -inset-1.5" />
                   <img
                     alt={user.firstname}
-                    src={foto}
+                    src={user.photo.url}
                     className="size-8 rounded-full"
                   />
                 </MenuButton>
