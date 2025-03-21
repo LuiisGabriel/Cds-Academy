@@ -10,7 +10,7 @@ query getVideos($modulo: String, $subModulo: String, $ambiente: String) {
     titulo
     modulo
     subModulo
-    videoId
+    url
   }
 }
 `;

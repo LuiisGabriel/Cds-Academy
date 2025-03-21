@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import { useQuery } from '@apollo/client';
 import { getVideos } from '../graphQl/Querys';
-import YouTube from 'react-youtube';
+import ReactPlayer from 'react-player';
 import { useUser } from '../lib/customHooks';
 
 
@@ -41,7 +41,7 @@ const RetaguardaDesktopOperacoes = () => {
                     <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 xl:gap-x-1">
                         {data.videos.map((video) => (
                             <a className="group">
-                                <YouTube videoId={video.videoId} />
+                                <ReactPlayer url={video.url} /> 
                                 <h3 className="mt-4 text-xl text-gray-700">{video.titulo}</h3>
                             </a>
                         ))}
