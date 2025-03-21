@@ -88,12 +88,12 @@ async adminSignup(adminSignupRequest) {
 }
 
 async createVideo(createVideoRequest) {
-  const { titulo, ambiente, modulo, videoId, subModulo } = createVideoRequest;
+  const { titulo, ambiente, modulo, url, subModulo } = createVideoRequest;
   const videoData = {
     titulo,
     ambiente,
     modulo,
-    videoId,
+    url,
     subModulo,
   };
   const response = await gqlClient.request(CreateVideoMutation, {
