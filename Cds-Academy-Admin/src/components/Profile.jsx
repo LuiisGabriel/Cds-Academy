@@ -2,8 +2,6 @@ import React from 'react';
 import { useUser } from '../lib/customHooks';
 import Navbar from './Navbar';
 import { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { CreateAsset } from '../graphQl/Mutations';
 
 const Profile = () => {
   const { user, authenticated } = useUser();

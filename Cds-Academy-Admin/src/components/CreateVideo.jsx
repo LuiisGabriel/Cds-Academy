@@ -18,7 +18,7 @@ const CreateVideo = () => {
   const [titulo, setTitulo] = useState('');
   const [ambiente, setAmbiente] = useState('');
   const [modulo, setModulo] = useState('');
-  const [videoId, setVideoId] = useState('');
+  const [url, setUrl] = useState('');
   const [subModulo, setSubModulo] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,7 +32,7 @@ const CreateVideo = () => {
           titulo,
           ambiente,
           modulo,
-          videoId,
+          url,
           subModulo
         }
       });
@@ -51,7 +51,7 @@ const CreateVideo = () => {
       setAmbiente('');
       setModulo('');
       setSubModulo('');
-      setVideoId('');
+      setUrl('');
       setIsLoading(false);
     }
   };
@@ -127,9 +127,10 @@ const CreateVideo = () => {
             <input
               className="border-2 outline-none p-2 rounded-md"
               type="email"
-              placeholder="Video id" value={videoId}
+              placeholder="Url" 
+              value={url}
               required
-              onChange={(e) => { setVideoId(e.target.value); }}
+              onChange={(e) => { setUrl(e.target.value); }}
             />
 
             <button
