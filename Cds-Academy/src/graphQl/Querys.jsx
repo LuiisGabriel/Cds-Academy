@@ -7,6 +7,7 @@ query getVideos($modulo: String, $subModulo: String, $ambiente: String) {
     stage: DRAFT
     where: {modulo: $modulo, AND: {subModulo: $subModulo, AND: {ambiente: $ambiente}}}
   ) {
+    id
     titulo
     modulo
     subModulo
