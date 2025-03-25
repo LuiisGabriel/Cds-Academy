@@ -9,18 +9,17 @@ import { useUser } from '../lib/customHooks';
 const SignUp = () => {
 
     const { user, authenticated } = useUser();
-        if (!user || !authenticated) {
-            return <div className="p-16 bg-gray-300 h-screen flex justify-center items-center">
-                <div className="ml-2 w-8 h-8 border-l-2 rounded-full animate-spin border-white" />
-            </div>;
-        }
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
+        if (!user || !authenticated) {
+            return <div className="p-16 bg-gray-300 h-screen flex justify-center items-center">
+                <div className="ml-2 w-8 h-8 border-l-2 rounded-full animate-spin border-white" />
+            </div>;
+        }
 
     const signUp = async () => {
         try {
