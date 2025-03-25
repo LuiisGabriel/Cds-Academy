@@ -13,7 +13,7 @@ export const GetUserByEmailQuery = gql`
 query getUserByEmailQuery($email: String!) {
   nextUser(where: {email: $email}, stage: DRAFT) {
     id
-    email
+    email 
     firstname
     lastname
     password
