@@ -42,7 +42,7 @@ const RetaguardaWebCadastros = () => {
     }
 
     const handleCondicao = () => {
-        if(watched > 2 || playedTime > 10){
+        if(watched > 3 || playedTime > 60){
             setCondicao('apto');
         }
         else{

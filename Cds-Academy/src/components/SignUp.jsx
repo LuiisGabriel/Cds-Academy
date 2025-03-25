@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useState } from 'react';
 import { API_ROUTES, APP_ROUTES } from '../utils/constants';
 import { Link, useNavigate } from 'react-router-dom';
-import validator from 'validator';
 
 const SignUp = () => {
 
