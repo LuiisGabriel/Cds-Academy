@@ -53,7 +53,7 @@ const SignIn = () => {
           Entre na sua conta
         </h2>
         <div className="flex flex-1 flex-col justify-evenly items-center">
-          <form className="space-y-6 w-2/3 items-center">
+          <div className="space-y-6 w-2/3 items-center">
             <div>
               <input
                 className="border-2 outline-none p-2 rounded-md w-3/3"
@@ -91,7 +91,7 @@ const SignIn = () => {
                 </span>
               </button>
             </div>
-          </form>
+          </div>
         </div>
         <div className="text-center text-sm">
           Não é cadastrado?

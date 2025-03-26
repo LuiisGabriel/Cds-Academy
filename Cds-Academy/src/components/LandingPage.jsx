@@ -19,10 +19,11 @@ const LandingPage = () => {
       <div className="ml-2 w-8 h-8 border-l-2 rounded-full animate-spin border-white" />
     </div>;
   }
+  
   return (
     <>
       <nav className="sticky top-0 z-50"><Navbar /></nav>
-      <div className="bg-gray-300">
+      <div className="bg-gray-300 p-16">
         <div className="relative overflow-hidden ">
           <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-5 lg:pb-70 ">
             <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">

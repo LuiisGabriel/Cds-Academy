@@ -22,8 +22,7 @@ const RetaguardaDesktopFerramentas = () => {
 
     if (loading) {
         return (
-            <div className="p-16 bg-gray-800 h-screen flex justify-center items-center">
-                <div className="text-2xl mb-4 font-bold text-white">Carregando</div>
+            <div className="p-16 bg-gray-300 h-screen flex justify-center items-center">
                 <div className="ml-2 w-8 h-8 border-l-2 rounded-full animate-spin border-white" />
             </div>
         )
