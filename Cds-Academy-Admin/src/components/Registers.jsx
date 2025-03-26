@@ -16,7 +16,7 @@ const cadastros = [
     },
 
     {
-        id: 1,
+        id: 2,
         name: 'Cadastrar usuário',
         href: APP_ROUTES.USER_SIGN_UP,
         imageSrc: CDSWEB,
@@ -25,7 +25,7 @@ const cadastros = [
     },
 
     {
-        id: 2,
+        id: 3,
         name: 'Cadastrar novo vídeo',
         href: APP_ROUTES.CREATEVIDEO,
         imageSrc: CDSDESKTOP,

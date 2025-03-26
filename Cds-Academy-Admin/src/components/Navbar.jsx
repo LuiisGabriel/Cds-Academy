@@ -2,6 +2,8 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import Logo from '../assets/LOGO.png'
 import { APP_ROUTES } from '../utils/constants';
 import { useUser } from '../lib/customHooks';
+import { useState, useEffect } from 'react';
+import defaultProfilePhoto from '../assets/profile.png'
 
 const navigation = [
   { name: 'Página inicial', href: APP_ROUTES.LANDINGPAGE },
@@ -21,6 +23,19 @@ function logout(e) {
 export default function Navbar() {
 
   const { user, authenticated } = useUser();
+  const [profilePhoto, setProfilePhoto] = useState('');
+  const photoUrl = user?.photo?.url; 
+
+  useEffect(() => {
+
+    if(photoUrl == null){
+      setProfilePhoto(defaultProfilePhoto);
+    }
+    else{
+      setProfilePhoto(photoUrl);
+    }
+  }, [photoUrl]); 
+
   if (!user || !authenticated) {
     return <div className="p-16 bg-gray-300 h-screen flex justify-center items-center">
       <div className="ml-2 w-8 h-8 border-l-2 rounded-full animate-spin border-white" />
@@ -67,11 +82,11 @@ export default function Navbar() {
               </div>
             <Menu as="div" className="relative ml-3">
               <div>
-                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:bg-grey-300 focus:ring-offset-gray-800 focus:outline-hidden">
+                <MenuButton className="relative flex rounded-full bg-red-800 text-sm focus:bg-grey-300 focus:ring-offset-gray-800 focus:outline-hidden">
                   <span className="absolute -inset-1.5" />
                   <img
                     alt={user.firstname}
-                    src={user.photo.url}
+                    src={profilePhoto}
                     className="size-8 rounded-full"
                   />
                 </MenuButton>
