@@ -5,6 +5,8 @@ import { getVideos } from '../graphQl/Querys';
 import { useUser } from '../lib/customHooks';
 import ReactPlayer from 'react-player';
 import { useEffect, useState } from 'react';
+import { Carousel } from '@material-tailwind/react';
+
 
 const RetaguardaWebCadastros = () => {
     const { user, authenticated } = useUser();
@@ -70,7 +72,17 @@ const RetaguardaWebCadastros = () => {
     return (
         <>
             <nav className="sticky top-0 z-50"><Navbar /></nav>
-            <div className="bg-gray-300">
+            <div className="bg-gray-300 flex flex-col items-center pt-16">
+                <div className=" sm:text-5xl pb-10">
+                    <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+                        Bem-vindo ao treinamento de {subModulo} do módulo {modulo}
+                    </h1>
+                </div>
+                <div className=" sm:text-4xl pb-4 w-2/3 text-center pb-16">
+                    <h1 className="text-3xl font-normal tracking-tight text-gray-700">
+                        Aqui você vai encontrar os treinamentos necessários para utilizar os cadastros de retaguarda do sistema CDS.
+                    </h1>
+                </div>
                 <h1>you watched {watched} videos</h1>
                 <h1>you watched {watchedMinutes} minutes</h1>
                 <h1>you watched {playedTime} seconds </h1>
@@ -79,20 +91,22 @@ const RetaguardaWebCadastros = () => {
                 <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 ">
                     <h2 className="sr-only">Videos</h2>
                     <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 xl:gap-x-1 gap-y-50">
-                        {data.videos.map((video) => (
-                            <a className="h-150">
-                                <ReactPlayer
-                                    url={video.url}
-                                    width='100%'
-                                    height='100%'
-                                    onEnded={handleEnded}
-                                    onProgress={handleProgress}
-                                    controls={true}
-                                />
-                                <h3 className="mt-4 text-xl text-gray-700">{video.titulo}</h3>
-                                <h3 className="mt-4 text-xl">{video.id}</h3>
-                            </a>
-                        ))}
+                        <Carousel className="h-200" id='34534'>
+                            {data.videos.map((video) => (
+                                <div className="h-150">
+                                    <ReactPlayer
+                                        url={video.url}
+                                        width='100%'
+                                        height='100%'
+                                        onEnded={handleEnded}
+                                        onProgress={handleProgress}
+                                        controls={true}
+                                    />
+                                    <h3 className="mt-4 text-xl ">{video.titulo}</h3>
+                                    <h3 className="mt-4 text-xl">{video.id}</h3>
+                                </div>
+                            ))}
+                        </Carousel>
                     </div>
                 </div>
             </div>

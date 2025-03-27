@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { API_ROUTES, APP_ROUTES } from '../utils/constants';
 import { Link, useNavigate } from 'react-router-dom';
+import validator from "validator";
 
 const SignUp = () => {
 
@@ -16,8 +17,11 @@ const SignUp = () => {
 
   const signUp = async () => {
     try {
+      if (!validator.isEmail(email)) {
+        alert('Digite um email válido')
+        return;
+      }
       setIsLoading(true);
-
       const response = await axios({
         method: 'POST',
         url: API_ROUTES.SIGN_UP,
@@ -35,8 +39,17 @@ const SignUp = () => {
       navigate(APP_ROUTES.SIGN_IN);
     }
     catch (err) {
-      console.log('Ocorreu algum erro no cadastro: ', err);
+      if(err.response.data.message == undefined){
+        alert('preencha todos os campos!')
+      }
+      if(err.response.data.message == 'Este email já está sendo utilizado'){
+         alert('Este email já está sendo utilizado')
+      }
+      else{
+        console.log('Ocorreu algum erro no cadastro: ', err.response.data.message);
+      }
     }
+  
     finally {
       setIsLoading(false);
     }
