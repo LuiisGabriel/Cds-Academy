@@ -18,6 +18,7 @@ class AuthController {
         firstname,
         lastname,
       });
+
       res.send({ user, token });
     } catch (err) {
       console.error("POST auth/signup, Something Went Wrong:", err);

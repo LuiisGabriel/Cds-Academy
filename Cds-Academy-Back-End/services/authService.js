@@ -9,6 +9,14 @@ const { JWT_SECRET, JWT_EXPIRES_IN } = process.env;
 class AuthService {
   async signup(signupRequest) {
     const { email, password, firstname, lastname } = signupRequest;
+     console.log('before',signupRequest)
+    const getUserResponse = await gqlClient.request(GetUserByEmailQuery, {
+      email,
+    });
+    if (getUserResponse?.nextUser?.email === email) {
+      throw new Error("Este email já está sendo utilizado");
+    }
+
     const hashedPassword = await bcrypt.hash(password, 8);
     const userData = {
       email,
@@ -16,6 +24,7 @@ class AuthService {
       firstname,
       lastname,
     };
+
     const response = await gqlClient.request(CreateNextUserMutation, {
       userData,
     });
@@ -28,18 +37,17 @@ class AuthService {
     return { user: response.createNextUser, token };
   }
 
-
   async signin(email, password) {
     const getUserResponse = await gqlClient.request(GetUserByEmailQuery, {
       email,
     });
     const { nextUser } = getUserResponse;
     if (!nextUser) {
-      throw new Error("Invalid Email Or Password");
+      throw new Error("Email ou senha inválidos");
     }
     const isMatch = await bcrypt.compare(password, nextUser.password);
     if (!isMatch) {
-      throw new Error("Invalid Email Or Password");
+      throw new Error("Email ou senha inválidos");
     }
     const token = jwt.sign(
       {
@@ -68,6 +76,13 @@ class AuthService {
 
   async adminSignup(adminSignupRequest) {
     const { email, password, firstname, lastname } = adminSignupRequest;
+    const getUserResponse = await gqlClient.request(GetAdminUserByEmailQuery, {
+      email,
+    });
+    if (getUserResponse?.nextUser?.email === email) {
+      throw new Error("Este email já está sendo utilizado");
+    }
+    
     const hashedPassword = await bcrypt.hash(password, 8);
     const adminUserData = {
       email,
@@ -75,9 +90,12 @@ class AuthService {
       firstname,
       lastname,
     };
+
     const response = await gqlClient.request(CreateNextAdminUserMutation, {
       adminUserData,
     });
+
+
     if (!response?.createNextAdminUser) {
       throw new Error("CreateNextAdminUser Failed");
     }
@@ -112,11 +130,11 @@ class AuthService {
     });
     const { nextAdminUser } = getUserResponse;
     if (!nextAdminUser) {
-      throw new Error("Invalid Email Or Password");
+      throw new Error("Email ou senha inválidos");
     }
     const isMatch = await bcrypt.compare(password, nextAdminUser.password);
     if (!isMatch) {
-      throw new Error("Invalid Email Or Password");
+      throw new Error("Email ou senha inválidos");
     }
     const token = jwt.sign(
       {
