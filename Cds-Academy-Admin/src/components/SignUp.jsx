@@ -15,18 +15,21 @@ const SignUp = () => {
   const [lastname, setLastname] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  
-      if (!user || !authenticated) {
-          return <div className="p-16 bg-gray-300 h-screen flex justify-center items-center">
-              <div className="ml-2 w-8 h-8 border-l-2 rounded-full animate-spin border-white" />
-          </div>;
-      }
+
+  if (!user || !authenticated) {
+    return <div className="p-16 bg-gray-300 h-screen flex justify-center items-center">
+      <div className="ml-2 w-8 h-8 border-l-2 rounded-full animate-spin border-white" />
+    </div>;
+  }
 
 
   const signUp = async () => {
     try {
       setIsLoading(true);
-
+      if (!validator.isEmail(email)) {
+        alert('Digite um email válido')
+        return;
+      }
       const response = await axios({
         method: 'POST',
         url: API_ROUTES.ADMIN_SIGN_UP,
@@ -46,7 +49,15 @@ const SignUp = () => {
       }
     }
     catch (err) {
-      console.log('Ocorreu algum erro no cadastro: ', err);
+      if (err.response.data.message == undefined) {
+        alert('preencha todos os campos!')
+      }
+      if (err.response.data.message == 'Este email já está sendo utilizado') {
+        alert('Este email já está sendo utilizado')
+      }
+      else {
+        console.log('Ocorreu algum erro no cadastro: ', err.response.data.message);
+      }
     }
     finally {
       setIsLoading(false);

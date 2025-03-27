@@ -38,7 +38,9 @@ const SignIn = () => {
       navigate(APP_ROUTES.LANDINGPAGE)
     }
     catch (err) {
-      console.log('Some error occured during signing in: ', err);
+      alert(err.response.data.message);
+      console.log(err);
+      
     }
     finally {
       setIsLoading(false);
