@@ -53,6 +53,7 @@ class AuthController {
     }
   }
 
+
   async adminSignup(req, res) {
     try {
       const { email, password, firstname, lastname } = req.body;
