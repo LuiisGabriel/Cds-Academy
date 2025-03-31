@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import gqlClient from "../graphql/client.js";
-import { CreateNextUserMutation, GetUserByEmailQuery, CreateNextAdminUserMutation, CreateVideoMutation, GetAdminUserByEmailQuery } from "../graphql/mutations.js";
+import { CreateNextUserMutation, GetUserByEmailQuery, CreateNextAdminUserMutation, CreateVideoMutation, GetAdminUserByEmailQuery, GetVideos } from "../graphql/mutations.js";
 
 
 const { JWT_SECRET, JWT_EXPIRES_IN } = process.env;
@@ -9,7 +9,6 @@ const { JWT_SECRET, JWT_EXPIRES_IN } = process.env;
 class AuthService {
   async signup(signupRequest) {
     const { email, password, firstname, lastname } = signupRequest;
-     console.log('before',signupRequest)
     const getUserResponse = await gqlClient.request(GetUserByEmailQuery, {
       email,
     });
