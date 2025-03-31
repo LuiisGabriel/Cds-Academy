@@ -1,13 +1,10 @@
-import Navbar from './Navbar';
+
 import { useQuery } from '@apollo/client';
 import { getVideos } from '../graphQl/Querys';
-import { useUser } from '../lib/customHooks';
 import ReactPlayer from 'react-player';
-import { useState, useEffect } from 'react';
-import { Carousel } from '@material-tailwind/react';
+import { useCallback, useEffect, useState } from 'react';
 
-const RetaguardaWebCadastros = () => {
-    const { user, authenticated } = useUser();
+const Video = () => {
     const pathname = location.pathname.split('/');
     const ambiente = pathname[1];
     const modulo = pathname[2];
@@ -17,16 +14,6 @@ const RetaguardaWebCadastros = () => {
     const [playedTime, setPlayedTime] = useState(0);
     const [watched, setWatched] = useState(0);
     const [condicao, setCondicao] = useState('inapto');
-
-    useEffect(() =>{
-        handleCondicao();
-    })
-
-    if (!user || !authenticated) {
-        return <div className="p-16 bg-gray-300 h-screen flex justify-center items-center">
-            <div className="ml-2 w-8 h-8 border-l-2 rounded-full animate-spin border-white" />
-        </div>;
-    }
 
     if (loading) {
         return (
@@ -39,15 +26,7 @@ const RetaguardaWebCadastros = () => {
         return alert('Ocorreu um problema ao carregar os vídeos!!!');
     }
 
-    async function handleLength () {
-        setLength(data.videos.map(() => {}).length);
-    }
-
-    if(length <= 0){
-         handleLength();
-    }
-
-    async function handleCondicao () {
+    function handleCondicao() {
         if (watched >= length && playedTime >= 15) {
             setCondicao('apto');
         }
@@ -56,13 +35,19 @@ const RetaguardaWebCadastros = () => {
         }
     }
 
+    function handleLength() {
+        setLength(data.videos.map(() => { }).length);
+    }
+
     function handleProgress(progress) {
         if (!progress.seeking) {
             setPlayedTime(playedTime + 1);
         }
+
     }
 
     function handleEnded() {
+
         setWatched(watched + 1);
     }
 
@@ -76,14 +61,9 @@ const RetaguardaWebCadastros = () => {
                         Bem-vindo ao treinamento de {subModulo} do módulo {modulo}
                     </h1>
                 </div>
-                <div className=" sm:text-4xl  w-2/3 text-center pb-8">
+                <div className=" sm:text-4xl pb-4 w-2/3 text-center pb-16">
                     <h1 className="text-3xl font-normal tracking-tight text-gray-700">
                         Aqui você vai encontrar os treinamentos necessários para utilizar os cadastros de retaguarda do sistema CDS.
-                    </h1>
-                </div>
-                <div className=" sm:text-4xl pb-16 w-2/3 text-center ">
-                    <h1 className="text-2xl font-normal tracking-tight text-black">
-                        Assista os vídeos até o final!!
                     </h1>
                 </div>
                 <h1>you watched {watched} videos</h1>
@@ -93,7 +73,7 @@ const RetaguardaWebCadastros = () => {
                 <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 ">
                     <h2 className="sr-only">Videos</h2>
                     <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 xl:gap-x-1 gap-y-50">
-                        <Carousel className="h-200">
+                        
                             {data.videos.map((video) => (
                                 <div className="h-150" id='teste'>
                                     <ReactPlayer
@@ -104,15 +84,15 @@ const RetaguardaWebCadastros = () => {
                                         onProgress={handleProgress}
                                         controls={true}
                                     />
+                                    <h3>{propTypesSlideRef}</h3>
                                     <h3 className="mt-4 text-xl ">{video.titulo}</h3>
                                     <h3 className="mt-4 text-xl">{video.id}</h3>
                                 </div>
                             ))}
-                        </Carousel>
                     </div>
                 </div>
             </div>
         </>
     );
 }
-export default RetaguardaWebCadastros;
+export default Video;
