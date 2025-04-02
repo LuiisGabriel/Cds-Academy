@@ -4,31 +4,22 @@ import Logo from '../assets/LOGO.png'
 import { APP_ROUTES } from '../utils/constants';
 import { useUser } from '../lib/customHooks';
 import { useState, useEffect } from 'react';
-import defaultProfilePhoto from '../assets/profile.png'
+import { useNavigate } from 'react-router-dom';
+import defaultProfilePhoto from '../assets/profile.png';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
-}
-
-function logout(e) {
-  e.preventDefault();
-  localStorage.removeItem('token');
-  window.location.reload();
 }
 
 export default function Navbar() {
 
   const { user, authenticated } = useUser();
   const [profilePhoto, setProfilePhoto] = useState('');
+  const photoUrl = user?.photo?.url; 
   let bgColor = 'bg-gray-800';
   let btnHover = 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium';
-  const photoUrl = user?.photo?.url; 
-  const navigation = [
-    { name: 'Página inicial', href: APP_ROUTES.LANDINGPAGE },
-    { name: 'Treinamentos', href: APP_ROUTES.TRAINMENTS },
-    { name: 'Avaliações', href: APP_ROUTES.VALUATIONS },
-    { name: 'Sobre', href: APP_ROUTES.ABOUT },
-  ];
+  const navigation = [];
+  const navigate = useNavigate();
 
   useEffect(() => {
     if(photoUrl == null){
@@ -48,14 +39,27 @@ export default function Navbar() {
   if(user.role == 'ADMIN'){
     navigation.splice(0, navigation.length);
     navigation.push(
-      { name: 'Página inicial', href: APP_ROUTES.LANDINGPAGE },
-      { name: 'Treinamentos', href: APP_ROUTES.TRAINMENTS },
-      { name: 'Avaliações', href: APP_ROUTES.VALUATIONS },
-      { name: 'Sobre', href: APP_ROUTES.ABOUT },
-      { name: 'Teste', href: APP_ROUTES.PROFILE },
+      { name: 'Página inicial', href: APP_ROUTES.ADMIN_HOME_PAGE },
+      { name: 'Cadastrar usuário', href: APP_ROUTES.CREATE_USER },
+      { name: 'Cadastrar vídeo', href: APP_ROUTES.CREATEVIDEO },
     )
      bgColor = 'bg-red-800';
      btnHover = 'text-gray-300 hover:bg-red-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium';
+  }
+
+  if(user.role == 'USER'){
+    navigation.splice(0, navigation.length);
+    navigation.push(
+      { name: 'Página inicial', href: APP_ROUTES.USER_HOME_PAGE },
+      { name: 'Treinamentos', href: APP_ROUTES.TRAINMENTS },
+      { name: 'Avaliações', href: APP_ROUTES.VALUATIONS },
+    )
+  }
+
+  function logout(e) {
+    e.preventDefault();
+    localStorage.removeItem('token');
+    navigate(APP_ROUTES.LANDINGPAGE);
   }
 
   return (

@@ -10,11 +10,16 @@ export const API_ROUTES = {
 export const APP_ROUTES = {
   SIGN_UP: '/signup',
   SIGN_IN: '/signin',
+  CREATE_USER: '/admin/createUser',
   LANDINGPAGE: '/landingPage',
+  ADMIN_HOME_PAGE: '/admin/home',
+  USER_HOME_PAGE: '/home',
   VIDEOS: '/videos',
   PROFILE: '/profile',
   ABOUT: '/about',
   TRAINMENTS: '/trainments',
+  VALUATIONS: '/valuations',
+  CREATEVIDEO: '/createvideo',
   CDSWEB: '/cdsweb',
   CDSDESKTOP: '/cdsdesktop',
   WEB_RETAGUARDA: '/web/retaguarda',
@@ -33,5 +38,4 @@ export const APP_ROUTES = {
   DESKTOP_FRENTEDELOJA_OPERACOES: '/desktop/frentedeloja/operacoes',
   DESKTOP_FRENTEDELOJA_CADASTROS: '/desktop/frentedeloja/cadastros',
   DESKTOP_FRENTEDELOJA_FERRAMENTAS: '/desktop/frentedeloja/ferramentas',
-  VALUATIONS: '/valuations',
 }

@@ -26,6 +26,10 @@ import FrenteDeLojaWebOperacoes from './components/cdsWeb/frenteDeLojaWeb/Frente
 import FrenteDeLojaDesktopFerramentas from './components/cdsDesktop/frenteDeLojaDesktop/FrenteDeLojaDesktopFerramentas';
 import FrenteDeLojaDesktopCadastros from './components/cdsDesktop/frenteDeLojaDesktop/FrenteDeLojaDesktopCadastros';
 import FrenteDeLojaDesktopOperacoes from './components/cdsDesktop/frenteDeLojaDesktop/FrenteDeLojaDesktopOperacoes';
+import CreateVideo from './components/CreateVideo';
+import AdminHomePage from './components/AdminHomePage';
+import UserHomePage from './components/UserHomePage';
+import CreateUser from './components/CreateUser';
 
 
 function App() {
@@ -36,10 +40,15 @@ function App() {
         <Route exact path="/" element={<Navigate to={APP_ROUTES.LANDINGPAGE} />} />
         <Route path={APP_ROUTES.SIGN_UP} exact element={<SignUp />} />
         <Route path={APP_ROUTES.SIGN_IN} element={<SignIn />} />
+        <Route path={APP_ROUTES.CREATE_USER} element={<CreateUser />} />
         <Route path={APP_ROUTES.LANDINGPAGE} element={<LandingPage />} />
+        <Route path={APP_ROUTES.ADMIN_HOME_PAGE} element={<AdminHomePage />} />
+        <Route path={APP_ROUTES.USER_HOME_PAGE} element={<UserHomePage />} />
         <Route path={APP_ROUTES.PROFILE} element={<Profile />} />
         <Route path={APP_ROUTES.ABOUT} element={<About />} />
         <Route path={APP_ROUTES.TRAINMENTS} element={<Trainments />} />
+        <Route path={APP_ROUTES.VALUATIONS} element={<Valuations />} />
+        <Route path={APP_ROUTES.CREATEVIDEO} element={<CreateVideo />} />
         <Route path={APP_ROUTES.CDSWEB} element={<CdsWeb />} />
         <Route path={APP_ROUTES.CDSDESKTOP} element={<CdsDesktop />} />
         <Route path={APP_ROUTES.WEB_RETAGUARDA} element={<RetaguardaWeb />} />
@@ -58,7 +67,6 @@ function App() {
         <Route path={APP_ROUTES.DESKTOP_FRENTEDELOJA_CADASTROS} element={<FrenteDeLojaDesktopCadastros />} />
         <Route path={APP_ROUTES.DESKTOP_FRENTEDELOJA_OPERACOES} element={<FrenteDeLojaDesktopOperacoes/>} />
         <Route path={APP_ROUTES.DESKTOP_FRENTEDELOJA_FERRAMENTAS} element={<FrenteDeLojaDesktopFerramentas />} />
-        <Route path={APP_ROUTES.VALUATIONS} element={<Valuations />} />
       </Routes>
     </BrowserRouter>
   );

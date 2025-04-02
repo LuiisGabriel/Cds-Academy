@@ -9,8 +9,12 @@ import { storeTokenInLocalStorage } from '../lib/common';
 const SignIn = () => {
   const navigate = useNavigate();
   const { user, authenticated } = useUser();
-  if (user || authenticated) {
-    navigate(APP_ROUTES.LANDINGPAGE)
+  if (user || authenticated && user.role == 'ADMIN') {
+    navigate(APP_ROUTES.ADMIN_HOME_PAGE)
+  }
+
+  if (user || authenticated && user.role == 'USER') {
+    navigate(APP_ROUTES.USER_HOME_PAGE)
   }
 
   const [email, setEmail] = useState('');
@@ -34,10 +38,10 @@ const SignIn = () => {
       }
         storeTokenInLocalStorage(response.data.token);
         if(response.data.user.role == 'ADMIN'){
-            navigate(APP_ROUTES.ABOUT);
+            navigate(APP_ROUTES.ADMIN_HOME_PAGE);
         }
         if(response.data.user.role == 'USER'){
-            navigate(APP_ROUTES.LANDINGPAGE)
+            navigate(APP_ROUTES.USER_HOME_PAGE)
         }
     }
     catch (err) {
