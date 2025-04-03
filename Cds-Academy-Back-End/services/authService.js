@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import gqlClient from "../graphql/client.js";
-import { CreateNextUserMutation, GetUserByEmailQuery, CreateNextAdminUserMutation, CreateVideoMutation, GetAdminUserByEmailQuery, GetVideos } from "../graphql/mutations.js";
+import { CreateNextUserMutation, GetUserByEmailQuery, CreateVideoMutation, GetVideos } from "../graphql/mutations.js";
 
 
 const { JWT_SECRET, JWT_EXPIRES_IN } = process.env;
@@ -74,36 +74,6 @@ class AuthService {
     return nextUser;
   }
 
-  async adminSignup(adminSignupRequest) {
-    const { email, password, firstname, lastname } = adminSignupRequest;
-    const getUserResponse = await gqlClient.request(GetAdminUserByEmailQuery, {
-      email,
-    });
-    if (getUserResponse?.nextUser?.email === email) {
-      throw new Error("Este email já está sendo utilizado");
-    }
-    
-    const hashedPassword = await bcrypt.hash(password, 8);
-    const adminUserData = {
-      email,
-      password: hashedPassword,
-      firstname,
-      lastname,
-    };
-
-    const response = await gqlClient.request(CreateNextAdminUserMutation, {
-      adminUserData,
-    });
-
-
-    if (!response?.createNextAdminUser) {
-      throw new Error("CreateNextAdminUser Failed");
-    }
-    const token = jwt.sign({ user: response.createNextAdminUser }, JWT_SECRET, {
-      expiresIn: JWT_EXPIRES_IN,
-    });
-    return { user: response.createNextAdminUser, token };
-  }
 
   async createVideo(createVideoRequest) {
     const { titulo, ambiente, modulo, url, subModulo } = createVideoRequest;
@@ -121,43 +91,6 @@ class AuthService {
       throw new Error("CreateVideo Failed");
     }
     return { user: response.createVideo };
-  }
-
-
-  async adminSignin(email, password) {
-    const getUserResponse = await gqlClient.request(GetAdminUserByEmailQuery, {
-      email,
-    });
-    const { nextAdminUser } = getUserResponse;
-    if (!nextAdminUser) {
-      throw new Error("Email ou senha inválidos");
-    }
-    const isMatch = await bcrypt.compare(password, nextAdminUser.password);
-    if (!isMatch) {
-      throw new Error("Email ou senha inválidos");
-    }
-    const token = jwt.sign(
-      {
-        id: nextAdminUser.id,
-        email: nextAdminUser.email,
-      },
-      JWT_SECRET,
-      { expiresIn: JWT_EXPIRES_IN }
-    );
-    return token;
-  }
-
-  async getCurrentAdminUser(token) {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    const getUserResponse = await gqlClient.request(GetAdminUserByEmailQuery, {
-      email: decoded.email,
-    });
-    const { nextAdminUser } = getUserResponse;
-    if (!nextAdminUser) {
-      throw new Error("User not found");
-    }
-    delete nextAdminUser.password;
-    return nextAdminUser;
   }
 
 }

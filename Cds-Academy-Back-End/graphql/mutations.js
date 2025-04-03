@@ -25,14 +25,6 @@ query getUserByEmailQuery($email: String!) {
 }
 `;
 
-export const CreateNextAdminUserMutation = gql`
-    mutation CreateNextAdminUser($adminUserData: NextAdminUserCreateInput!) {
-      createNextAdminUser(data: $adminUserData) {
-      id
-      email
-    }
-  }
-`;
 
 export const CreateVideoMutation = gql`
     mutation CreateVideo($videoData: VideoCreateInput!) {
@@ -42,21 +34,6 @@ export const CreateVideoMutation = gql`
     }
   } 
  `;
-
-export const GetAdminUserByEmailQuery = gql`
-    query getAdminUserByEmailQuery($email: String!) {
-      nextAdminUser(where: { email: $email }, stage: DRAFT) {
-      id
-      email
-      firstname
-      lastname
-      password
-      photo{
-      url
-      }
-    }
-  }
-`;
 
 export const GetVideos = gql`
 query getVideos($modulo: String, $subModulo: String, $ambiente: String) {
