@@ -17,7 +17,7 @@ export default function Navbar() {
   const [profilePhoto, setProfilePhoto] = useState('');
   const photoUrl = user?.photo?.url; 
   let bgColor = 'bg-gray-800';
-  let btnHover = 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium';
+  let btnHover = 'text-gray-300 hover:scale-105 hover:text-gray-300 rounded-md px-3 py-2 text-sm font-medium';
   const navigation = [];
   const navigate = useNavigate();
 
@@ -75,7 +75,7 @@ export default function Navbar() {
             </DisclosureButton>
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="flex shrink-0 items-center">
+            <div className="flex shrink-0 items-center pr-16">
               <a>
                 <img
                   alt="CDS Sistemas"
@@ -100,13 +100,9 @@ export default function Navbar() {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 ">
-              <div id="firstName" className='flex text-gray-300 mr-3 items-center'>
-                {user.firstName}
-              </div>
-            
             <Menu as="div" className="relative ml-3">
               <div>
-                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:bg-grey-300 focus:ring-offset-gray-800 focus:outline-hidden">
+                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm hover:scale-105 focus:ring-offset-gray-800 focus:outline-hidden">
                   <span className="absolute -inset-1.5" />
                   <img
                     alt={photoUrl}

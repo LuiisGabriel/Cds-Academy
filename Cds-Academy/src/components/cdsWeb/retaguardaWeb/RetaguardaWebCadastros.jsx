@@ -18,8 +18,9 @@ const RetaguardaWebCadastros = () => {
     const [watched, setWatched] = useState(0);
     const [condicao, setCondicao] = useState('inapto');
 
+    const watchedVideos = [];
 
-    useEffect(() =>{
+    useEffect(() => {
         handleCondicao();
     })
 
@@ -40,15 +41,15 @@ const RetaguardaWebCadastros = () => {
         return alert('Ocorreu um problema ao carregar os vídeos!!!');
     }
 
-    async function handleLength () {
-        setLength(data.videos.map(() => {}).length);
+    async function handleLength() {
+        setLength(data.videos.map(() => { }).length);
     }
 
-    if(length <= 0){
-         handleLength();
+    if (length <= 0) {
+        handleLength();
     }
 
-    async function handleCondicao () {
+    async function handleCondicao() {
         if (watched >= length && playedTime >= 15) {
             setCondicao('apto');
         }
@@ -67,9 +68,19 @@ const RetaguardaWebCadastros = () => {
         setWatched(watched + 1);
     }
 
+    function handleWatchedVideos(id) {
+
+        const videoId = String(id);
+        if (watchedVideos.includes(videoId)) {
+            console.log('video já assistido');
+        }
+        watchedVideos.push(videoId);
+        console.log(watchedVideos);
+    }
+
     return (
         <>
-            <nav className="sticky top-0 z-50"><Navbar/></nav>
+            <nav className="sticky top-0 z-50"><Navbar /></nav>
             length: {length}
             <div className="bg-gray-300 flex flex-col items-center pt-16">
                 <div className=" sm:text-5xl pb-10 text-center">
@@ -79,7 +90,7 @@ const RetaguardaWebCadastros = () => {
                 </div>
                 <div className=" sm:text-4xl  w-2/3 text-center pb-8">
                     <h1 className="text-3xl font-normal tracking-tight text-gray-700">
-                        Aqui você vai encontrar os treinamentos necessários para utilizar os cadastros de retaguarda do sistema CDS.
+                        Aqui você vai encontrar os treinamentos necessários para realizar os cadastros de retaguarda do sistema CDS.
                     </h1>
                 </div>
                 <div className=" sm:text-4xl pb-16 w-2/3 text-center ">
@@ -90,27 +101,29 @@ const RetaguardaWebCadastros = () => {
                 <h1>you watched {watched} videos</h1>
                 <h1>you watched {playedTime} seconds </h1>
                 <h1>você está {condicao} para realizar a prova!!</h1>
+                <h1>você assistiu os seguintes vídeos: {watchedVideos}</h1>
 
                 <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 ">
                     <h2 className="sr-only">Videos</h2>
                     <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 xl:gap-x-1 gap-y-50">
-                        <Carousel className="h-200">
-                            {data.videos.map((video) => (
-                                <div className="h-150" id='teste'>
-                                    <ReactPlayer
-                                        url={video.url}
-                                        width='100%'
-                                        height='100%'
-                                        onEnded={handleEnded}
-                                        onProgress={handleProgress}
-                                        controls={true}
-                                        pip={true}
-                                    />
-                                    <h3 className="mt-4 text-xl ">{video.titulo}</h3>
-                                    <h3 className="mt-4 text-xl">{video.id}</h3>
-                                </div>
-                            ))}
-                        </Carousel>
+                        {data.videos.map((video) => (
+                            <div className="h-150" id='teste'>
+                                <ReactPlayer
+                                    url={video.url}
+                                    width='100%'
+                                    height='100%'
+                                    onEnded={() => {
+                                        handleWatchedVideos(video.id);
+                                        handleEnded();
+                                    }
+                                    }
+                                    onProgress={handleProgress}
+                                    controls={true}
+                                />
+                                <h3 className="mt-4 text-xl ">{video.titulo}</h3>
+                                <h3 className="mt-4 text-xl">{video.id}</h3>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

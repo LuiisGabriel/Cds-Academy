@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { API_ROUTES, APP_ROUTES } from '../utils/constants';
 import { Link, useNavigate } from 'react-router-dom';
 import validator from "validator";
+import CdsSistemasFrente from '../assets/CdsSistemasFrente.jpg';
 
 const SignUp = () => {
 
@@ -58,7 +59,9 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="w-full h-screen flex justify-center items-center bg-gray-800">
+      <div 
+      style={{ '--image-url': `url(${CdsSistemasFrente})` }}
+      className="w-full h-screen flex justify-center items-center bg-[image:var(--image-url)] bg-cover bg-no-repeat bg-center">
         <div className="w-1/2 h-3/4 shadow-lg rounded-md bg-white p-8 flex flex-col">
           <h2 className="text-center font-medium text-2xl mb-4">
             Cadastre-se
